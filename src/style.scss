@@ -1,0 +1,21 @@
+// 公共样式
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body{
+  overflow-x: hidden;
+}
+*{
+  margin:0;
+  padding:0;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color:black
+}
+.van-nav-bar .van-icon,.van-nav-bar__text{
+  color: black!important;
+}

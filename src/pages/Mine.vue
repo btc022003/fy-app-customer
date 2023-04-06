@@ -5,8 +5,10 @@
     >
       <div class="user-info">
         <h3 class="font-bold text-lg">
-          HI 子涵<button
+          HI {{ info?.realName || "某某" }}
+          <button
             class="btn-bg text-white text-xs px-4 py-1 rounded-2xl ml-8"
+            @click="$router.push('/mine/setting')"
           >
             编辑
           </button>
@@ -20,10 +22,10 @@
     >
       <div
         class="item flex flex-col items-center"
-        @click="$router.push('/mine/orders')"
+        @click="$router.push('/mine/qa')"
       >
         <img src="../assets/svg/user-money.svg" alt="" />
-        <span>我的账单</span>
+        <span>我的投诉</span>
       </div>
       <div
         class="item flex flex-col items-center"

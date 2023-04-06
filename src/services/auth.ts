@@ -1,4 +1,4 @@
-import { get, post } from "../utils/request";
+import { get, post, put } from "../utils/request";
 
 /**
  * 登录
@@ -40,3 +40,11 @@ export const regAPI = ({ mobile, captcha }: User.IUserLoginInfo) => {
  * @returns
  */
 export const loadUserInfoAPI = () => get("/api/v1/members/info");
+
+/**
+ * 设置个人信息
+ * @param data
+ * @returns
+ */
+export const setInfoAPI = (data: User.IRealInfo) =>
+  put("/api/v1/members/set_id_num", data);

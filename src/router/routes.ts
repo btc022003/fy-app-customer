@@ -34,7 +34,43 @@ export default [
     component: () => import("../pages/Login.vue"),
   },
   {
+    path: "/reg",
+    component: () => import("../pages/Reg.vue"),
+  },
+  {
+    path: "/mine/setting",
+    component: () => import("../pages/Setting.vue"),
+  },
+  {
     path: "/page/emptyhouse",
     component: () => import("../pages/EmptyHouse.vue"),
+  },
+  {
+    path: "/mine/about",
+    component: () => import("../pages/About.vue"),
+  },
+  {
+    path: "/mine/help",
+    component: () => import("../pages/Help.vue"),
+  },
+  {
+    path: "/mine/notice",
+    component: () => import("../pages/Notice.vue"),
+  },
+  {
+    path: "/mine/orders",
+    component: () => import("../pages/Orders.vue"),
+  },
+  {
+    path: "/mine/my_room",
+    component: () => import("../pages/MyRoom.vue"),
+  },
+  {
+    path: "/mine/repairs",
+    component: () => import("../pages/Repairs.vue"),
+  },
+  {
+    path: "/mine/contracts",
+    component: () => import("../pages/Contract.vue"),
   },
 ];

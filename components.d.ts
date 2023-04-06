@@ -13,10 +13,12 @@ declare module '@vue/runtime-core' {
     TipText: typeof import('./src/components/TipText.vue')['default']
     TitleText: typeof import('./src/components/TitleText.vue')['default']
     VanButton: typeof import('vant/es')['Button']
+    VanCellGroup: typeof import('vant/es')['CellGroup']
+    VanField: typeof import('vant/es')['Field']
+    VanForm: typeof import('vant/es')['Form']
     VanNavBar: typeof import('vant/es')['NavBar']
-    VanPopup: typeof import('vant/es')['Popup']
-    VanSearch: typeof import('vant/es')['Search']
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
+    VanUploader: typeof import('vant/es')['Uploader']
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
-    <van-nav-bar title="登录" />
-    <TipText title="请登录" sub-title="欢迎回来，好久不见" />
+    <van-nav-bar title="注册" />
+    <TipText title="请注册" sub-title="欢迎回来，好久不见" />
     <!-- 表单 -->
     <ul class="form">
       <li>
@@ -28,13 +28,13 @@
         </div>
       </li>
     </ul>
-    <!-- <router-link to="/" class="forget">忘记密码？</router-link> -->
-    <van-button type="primary" size="large" class="submit" @click="login"
-      >登录</van-button
+    <router-link to="/" class="forget">忘记密码？</router-link>
+    <van-button type="primary" size="large" class="submit" @click="reg"
+      >注册</van-button
     >
     <p class="register">
-      <span>还没账号?</span
-      ><router-link to="/reg" class="to-register">快去注册</router-link>
+      <span>已有账号?</span
+      ><router-link to="/login" class="to-register">快去登录</router-link>
     </p>
   </div>
 </template>
@@ -42,7 +42,7 @@
 import TipText from "../components/TipText.vue";
 import useAuth from "../hooks/use-auth";
 
-const { mobile, remainTime, captcha, login, loadCaptcha } = useAuth();
+const { mobile, captcha, loadCaptcha, reg, remainTime } = useAuth();
 </script>
 <style scoped lang="scss">
 .wrap {

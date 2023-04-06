@@ -51,3 +51,29 @@ export const checkContractAPI = (id: string) =>
  */
 export const loadContractOrders = (id: string) =>
   get("/api/v1/members/contract_orders/" + id);
+
+/**
+ * 预约看房
+ * @param data
+ * @returns
+ */
+export const toDateAPI = (data: House.IDateInfo) =>
+  post("/api/v1/members/date_room", data);
+
+/**
+ * 获取预约看房记录
+ * @returns
+ */
+export const loadDateRoomsAPI = () => get("/api/v1/members/date_rooms");
+
+/**
+ * 加入收藏
+ * @param roomId
+ * @param remarks
+ * @returns
+ */
+export const toFavAPI = (roomId: string, remarks = "") =>
+  post("/api/v1/members/toggle_collection", {
+    roomId,
+    remarks,
+  });

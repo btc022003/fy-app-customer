@@ -63,6 +63,7 @@ export default [
   },
   {
     path: "/mine/my_room",
+    name: "MyDateRooms",
     component: () => import("../pages/MyRoom.vue"),
   },
   {
@@ -72,5 +73,10 @@ export default [
   {
     path: "/mine/contracts",
     component: () => import("../pages/Contract.vue"),
+  },
+  {
+    path: "/house/:id",
+    name: "HouseDetail",
+    component: () => import("../pages/Detail.vue"),
   },
 ];

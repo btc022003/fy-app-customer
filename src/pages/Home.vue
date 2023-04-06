@@ -50,32 +50,59 @@
     <div
       class="houses grid grid-cols-2 gap-8 items-center justify-items-center"
     >
-      <div class="house-item relative" v-for="i in 10" :key="i">
+      <div
+        style="min-height: 200px"
+        class="house-item relative w-full"
+        v-for="item in houses"
+        :key="item.id"
+        @click="$router.push({ name: 'HouseDetail', params: { id: item.id } })"
+      >
+        <span
+          v-if="item.isFull"
+          class="bg-rose-500 text-white p-2 absolute top-2 left-1 -rotate-45 rounded text-sm"
+          >已租</span
+        >
         <img
-          src="../assets/svg/fav.svg"
+          :src="item.isCollection ? fav : noFav"
           class="absolute top-2 right-2"
           alt=""
         />
 
         <img
-          src="../assets/images/house.png"
-          class="rounded-xl w-full"
+          :src="dalImg(item.images?.split(',')[0])"
+          class="rounded-xl w-full h-full"
           alt=""
         />
-        <div class="info absolute bottom-2 left-1 text-gray-200">
-          <span class="bg-white text-black p-1 rounded-md text-sm">整租</span>
-          <p>高新区·朗悦公园茂</p>
-          <p>单间·1200元/月</p>
+        <div
+          class="info absolute bottom-0 p-2 rounded left-0 text-gray-200 bg-slate-500 w-full bg-opacity-80"
+        >
+          <span class="bg-white text-black p-1 rounded-md text-sm">{{
+            item.house.isWhole ? "整租" : "合租"
+          }}</span>
+          <p>{{ item.house.dwelling }}</p>
+          <p>{{ item.content }}·{{ item.price }}元/月</p>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
+import { ref } from "vue";
 import TitleText from "../components/TitleText.vue";
+import { loadHousesAPI } from "../services/houses";
+import { dalImg } from "../utils/tools";
+import fav from "../assets/svg/fav.svg";
+import noFav from "../assets/svg/no-fav.svg";
+
 let tip = () => {
   alert("查看更多");
 };
+
+const houses = ref<House.IRoom[] | undefined>([]);
+loadHousesAPI().then((res) => {
+  // console.log(res.data);
+  houses.value = res.data.list;
+});
 </script>
 <style scoped lang="scss">
 .wrap {

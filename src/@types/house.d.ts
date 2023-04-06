@@ -92,4 +92,22 @@ declare namespace House {
     updatedAt: string;
     roomContractId: string;
   };
+
+  type IDateInfo = {
+    userId: string;
+    roomId: string;
+    dateTime: string;
+    remarks: string;
+  };
+
+  type IDateRoomInfo = {
+    id: string;
+    dateTime: string;
+    remarks: string;
+    createdAt: string;
+    updatedAt: string;
+    userId: string;
+    roomId: string;
+    room: IRoom;
+  };
 }

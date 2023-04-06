@@ -44,7 +44,7 @@
         @click="$router.push('/mine/my_room')"
       >
         <img src="../assets/svg/user-house.svg" alt="" />
-        <span>我的房间</span>
+        <span>我的预约</span>
       </div>
     </div>
     <div class="op text-gray-400">

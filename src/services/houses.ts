@@ -77,3 +77,11 @@ export const toFavAPI = (roomId: string, remarks = "") =>
     roomId,
     remarks,
   });
+
+/**
+ *
+ * @param id 支付房租
+ * @returns
+ */
+export const payOrderContractAPI = (id: string) =>
+  post("/api/v1/members/pay_order_contract/" + id);

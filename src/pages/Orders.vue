@@ -4,7 +4,7 @@
     <van-tabs v-model:active="active">
       <van-tab title="已支付">
         <div
-          class="item"
+          class="item m-2 p-2 text-white bg-indigo-500 text-sm rounded shadow"
           v-for="item in orders?.filter((item) => item.isPayed)"
         >
           <h1>金额:￥{{ item.price }}</h1>
@@ -18,7 +18,10 @@
         >
           <h1>金额:￥{{ item.price }}</h1>
           <p>最后支付时间:{{ formatDate(item.lastPayDate) }}</p>
-          <van-button type="danger" v-if="index === 0" @click="showPay = true"
+          <van-button
+            type="danger"
+            v-if="index === 0"
+            @click="showPayHandle(item)"
             >支付</van-button
           >
         </div></van-tab
@@ -40,7 +43,11 @@
         :focused="showKeyboard"
         @focus="showKeyboard = true"
       />
-      <van-button type="primary" block style="margin-top: 16px"
+      <van-button
+        type="primary"
+        block
+        style="margin-top: 16px"
+        @click="payHandle"
         >支付</van-button
       >
       <van-number-keyboard
@@ -54,8 +61,9 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import { loadContractOrders } from "../services/houses";
+import { loadContractOrders, payOrderContractAPI } from "../services/houses";
 import { formatDate } from "../utils/tools";
+import { showToast } from "vant";
 const router = useRouter();
 const route = useRoute();
 const goBack = () => router.back();
@@ -66,8 +74,25 @@ const showPay = ref(false);
 const showKeyboard = ref(false);
 const pwd = ref("");
 
-loadContractOrders(route.query.id as string).then((res) => {
-  // console.log(res.data);
-  orders.value = res.data;
-});
+const loadData = () =>
+  loadContractOrders(route.query.id as string).then((res) => {
+    // console.log(res.data);
+    orders.value = res.data;
+  });
+
+const currentId = ref("");
+
+const showPayHandle = (item: House.IContractOrder) => {
+  currentId.value = item.id;
+  showPay.value = true;
+};
+
+const payHandle = async () => {
+  // 调用支付进行付款
+  await payOrderContractAPI(currentId.value);
+  showToast("支付成功");
+  loadData();
+};
+
+loadData();
 </script>

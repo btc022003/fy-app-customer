@@ -62,7 +62,7 @@
 import { ref } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { loadContractOrders, payOrderContractAPI } from "../services/houses";
-import { formatDate } from "../utils/tools";
+import { formatDate, serverUrl } from "../utils/tools";
 import { showToast } from "vant";
 const router = useRouter();
 const route = useRoute();
@@ -83,8 +83,9 @@ const loadData = () =>
 const currentId = ref("");
 
 const showPayHandle = (item: House.IContractOrder) => {
-  currentId.value = item.id;
-  showPay.value = true;
+  // currentId.value = item.id;
+  // showPay.value = true;
+  window.location.href = serverUrl + "/pay/alipay/pay/" + item.id;
 };
 
 const payHandle = async () => {

@@ -79,13 +79,13 @@ const { mobile, remainTime, captcha, login, loadCaptcha } = useAuth();
 }
 .submit {
   margin: 24px;
-  width: 327px;
-  border-radius: 20px;
+  width: calc(100% - 48px);
+  border-radius: 100px;
 }
 .register {
   text-align: center;
-  margin-top: 60px;
   font-size: 15px;
+  margin: 60px auto 0;
   span {
     color: #9e9e9e;
   }

@@ -40,3 +40,21 @@ loadDateRoomsAPI().then((res) => {
   dateRooms.value = res.data;
 });
 </script>
+<style scoped>
+  .date-room{
+    background: linear-gradient(to right,black,transparent),url(../assets/images/Maskgroup.png) no-repeat;
+    background-size: cover;
+    color: #fff;
+    margin: .5rem;
+    border-radius: 10px;
+    padding: 1rem;
+    
+  }
+  .date-room h1{
+      line-height: 3;
+      font-size: 18px;
+    }
+    .date-room p{
+      line-height: 2;
+    }
+</style>

@@ -2,7 +2,7 @@
   <div class="orders">
     <van-nav-bar :title="room?.content" left-arrow @click-left="goBack" />
     <div
-      class="info shadow p-2 m-2 bg-sky-600 bg-opacity-60 text-white rounded"
+      class="info shadow p-2 bg-sky-600 bg-opacity-60 text-white"
     >
       <h2 class="text-lg font-bold">
         {{ room?.content }} | {{ room?.house.address }}
@@ -15,7 +15,7 @@
           >{{ room?.house.landLord.userName }}</a
         >
       </p>
-      <p class="text-rose-600 font-bold">价格:￥{{ room?.price }}</p>
+      <p class="text-rose-600 text-xl font-bold">价格:￥{{ room?.price }}</p>
       <van-button
         type="primary"
         icon="clock-o"
@@ -160,3 +160,24 @@ const toFavHandle = async () => {
 };
 loadData();
 </script>
+<style scoped>
+  .p-2{
+    padding: 1rem;
+  }
+  .info{
+    background: linear-gradient(to right,rgba(0, 0, 0, 0.69),transparent), url(../assets/images/Maskgroup.png) center center;
+    background-size: cover;
+    border-radius: 0 0 8px 8px;
+
+  }
+
+  .info h2{
+    margin: 10px 0;
+  }
+  .text-rose-600{
+    margin: 10px 0;
+  }
+  .van-button{
+    margin-right: 10px;
+  }
+</style>

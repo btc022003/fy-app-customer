@@ -1,8 +1,8 @@
 <template>
   <van-tabbar
     route
-    active-color="#A7B0FF"
-    inactive-color="#A7B0FF"
+    active-color="#1989fa"
+    inactive-color="#666"
     :placeholder="true"
     :safe-area-inset-bottom="true"
     z-index="5"

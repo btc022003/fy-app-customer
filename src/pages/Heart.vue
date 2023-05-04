@@ -3,7 +3,7 @@
     <h2 class="mt-10 font-bold pl-2 text-lg">心愿单</h2>
     <div class="tips grid grid-cols-2 gap-8 p-6">
       <div
-        class="left item border rounded-lg border-gray-300 flex items-center p-2 bg-white"
+        class="left item rounded-lg shadown flex items-center p-2 bg-white"
       >
         <img src="../assets/svg/xy-heart.svg" alt="" />
         <div class="txt flex flex-col p-2">
@@ -14,10 +14,10 @@
         </div>
       </div>
       <div
-        class="right item border rounded-lg border-gray-300 flex items-center p-2 bg-white"
+        class="right item rounded-lg shadown flex items-center p-2 bg-white"
       >
         <img src="../assets/svg/xy-history.svg" alt="" />
-        <div class="txt flex flex-col p-2">
+        <div class="txt flex flex-col ">
           <span class="font-bold">历史足迹</span>
           <span class="text-sm transform scale-75 origin-top-left block w-28"
             >最近浏览的房源</span
@@ -43,9 +43,62 @@
   </div>
 </template>
 <script setup lang="ts"></script>
-<style scoped>
+<style scoped lang="scss">
 .heart {
-  background: url("../assets/images/heart-bg.png") no-repeat;
+  /* background: url("../assets/images/heart-bg.png") no-repeat; */
   background-size: contain;
 }
+
+.heart h2{
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+.shadown{
+  box-shadow: 0 2px 6px #ccc;
+}
+.mt-10{
+  margin-top: 1rem;
+}
+.gap-8{
+  gap: 1rem;
+}
+.p-6{
+  padding: 1rem;
+}
+.pl-2{
+  padding-left: 1rem;
+}
+.houses{
+  /* background-color: #fff; */
+}
+.w-28{
+  width: 6rem;
+}
+.h-28{
+  height: 6rem;
+}
+.txt>.w-28{
+    display: block;
+    width: 7rem;
+  }
+.item{
+  overflow: hidden;
+  
+}
+.tips img{
+    width:30px;
+  }
+
+.info{
+  justify-content: flex-start;
+  
+}
+.info h3{
+    margin: 5px 0;
+  }
+
+  .p-2{
+    padding: .2rem .5rem;
+  }
 </style>

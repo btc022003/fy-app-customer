@@ -1,8 +1,9 @@
 <template>
   <div style="background-color: #f9f9fa" class="wrap overflow-x-hidden">
+    <!-- <div class="right-circle"></div>
+    <div class="left-circle"></div> -->
     <div class="top">
-      <div class="right-circle"></div>
-      <div class="left-circle"></div>
+      
       <div class="title">
         <h2>Hi 爱生活的你</h2>
         <p class="sub-title">在锋寓，给你愉悦的选房体验</p>
@@ -11,28 +12,28 @@
         <img src="../assets/images/banner.png" alt="" />
       </div>
       <div class="tools">
-        <div class="item">
+        <section> <div class="item">
           <img src="../assets/svg/location.svg" alt="" />
-          <p class="p-0 m-0">地图找房</p>
-        </div>
-        <div class="item">
+          
+        </div><p class="p-0 m-0">地图找房</p></section>
+        <section> <div class="item">
           <img src="../assets/svg/date.svg" alt="" />
-          <p>我的预约</p>
-        </div>
-        <div class="item">
+         
+        </div> <p>我的预约</p></section>
+        <section> <div class="item">
           <img src="../assets/svg/question.svg" alt="" />
-          <p>我的投诉</p>
-        </div>
-        <div class="item">
+          
+        </div><p>我的投诉</p></section>
+        <section> <div class="item">
           <img src="../assets/svg/repair.svg" alt="" />
-          <p>我的报修</p>
-        </div>
-        <div class="item">
+          
+        </div><p>我的报修</p></section>
+        <section> <div class="item">
           <img src="../assets/svg/one-pay.svg" alt="" />
-          <p>一键交租</p>
-        </div>
+          
+        </div><p>一键交租</p></section>
       </div>
-      <div class="ipt border border-gray-300 rounded-md flex flex-col m-4 p-4">
+      <div class="ipt bg-white border-gray-300 rounded-md flex flex-col m-4 p-4">
         <input
           class="border-b p-2 rounded"
           type="text"
@@ -52,7 +53,8 @@
     >
       <div
         style="min-height: 200px"
-        class="house-item relative w-full"
+        class="house-item  relative w-full"
+        :class="item.isFull?'house-item-active':''"
         v-for="item in houses"
         :key="item.id"
         @click="$router.push({ name: 'HouseDetail', params: { id: item.id } })"
@@ -63,7 +65,8 @@
           >已租</span
         >
         <img
-          :src="item.isCollection ? fav : noFav"
+          :src="fav"
+          v-if="item.isCollection"
           class="absolute top-2 right-2"
           alt=""
         />
@@ -74,7 +77,7 @@
           alt=""
         />
         <div
-          class="info absolute bottom-0 p-2 rounded left-0 text-gray-200 bg-slate-500 w-full bg-opacity-80"
+          class="info absolute bottom-0 p-2  left-0 text-gray-200 bg-slate-500 w-full bg-opacity-80"
         >
           <span class="bg-white text-black p-1 rounded-md text-sm">{{
             item.house.isWhole ? "整租" : "合租"
@@ -108,30 +111,10 @@ loadHousesAPI().then((res) => {
 .wrap {
   /* height: 100vh; */
   overflow-x: hidden !important;
+  // background: url(../assets/images/Vector.png) no-repeat ;
+  background-size: contain;
 
-  .top {
-    position: relative;
-    h2 {
-      padding-top: 24px;
-      padding-left: 8px;
-    }
-    .sub-title {
-      color: #979797;
-      /* margin-left: ; */
-      padding-left: 8px;
-      padding-top: 4px;
-    }
-    .banner {
-      margin: 1rem;
-      /* text-align: center; */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      img {
-        width: 100%;
-      }
-    }
-    .right-circle {
+  .right-circle {
       /* Ellipse 97 */
 
       position: absolute;
@@ -164,11 +147,39 @@ loadHousesAPI().then((res) => {
       );
       opacity: 0.39;
     }
+  .top {
+    position: relative;
+    
+    h2 {
+      padding-top: 24px;
+      padding-left: 1rem;
+      font-weight: bold;
+    }
+    .sub-title {
+      color: #979797;
+      /* margin-left: ; */
+      padding-left: 1rem;
+      padding-top: 4px;
+      font-size: 13px;
+    }
+    .banner {
+      margin: 1rem;
+      /* text-align: center; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 100%;
+      }
+    }
+    
     .tools {
       display: flex;
       align-items: center;
       justify-content: space-around;
       width: 100vw;
+      padding: 0 1rem;
+      box-sizing: border-box;
 
       .item {
         /* Ellipse 98 */
@@ -183,23 +194,99 @@ loadHousesAPI().then((res) => {
         /* top: 210px; */
 
         background: #ffffff;
-        border: 1px solid #d7d7d7;
+        // border: 1px solid #d7d7d7;
+        box-shadow: 0 0 10px #ccc;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        width: 4.2rem;
-        height: 4.2rem;
+        width: 3rem;
+        height: 3rem;
         gap: 2px;
-        p {
-          font-size: 12px;
-        }
+        
         img {
-          width: 20px;
-          height: 20px;
+          width: 30px;
+          height: 30px;
         }
+      }
+      section:nth-child(1) .item{
+        background-image: linear-gradient(#ffc62b,#ffb032);
+      }
+      section:nth-child(2) .item{
+        background-image: linear-gradient(#ff5b3d,#ff2b67);
+      }
+      section:nth-child(3) .item{
+        background-image: linear-gradient(#3facda,#2f8de2);
+      }
+      section:nth-child(4) .item{
+        background-image: linear-gradient(#9448ff,#6946fa);
+      }
+      section:nth-child(5) .item{
+        background-image: linear-gradient(#a8e541,#6dd227);
+      }
+      p {
+          font-size: 12px;
+          line-height: 2;
+          color: #000;
+        }
+    }
+  }
+  .houses{
+    padding: 0 1rem;
+    box-sizing: border-box;
+    font-size: 14px;
+    position: relative;
+    .house-item>span{
+      background-color: transparent;
+      left: 0px;
+      top: 0px;
+      position: absolute;
+      z-index: 99;
+      font-size: 13px;
+    }
+    
+    
+    
+    .info{
+      background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.9) 90%);
+      background-color: transparent!important;
+      span{
+        font-size: 12px;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      p:nth-of-type(1){
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 2;
+      }
+      p:nth-of-type(2){
+        font-size: 12px;
       }
     }
   }
+  .gap-8{
+    gap: 1rem;
+  }
 }
+
+.house-item{
+  overflow: hidden;
+  border-radius: 10px;
+}
+.house-item-active::after{
+      width: 0;
+      height: 0;
+      content: "";
+      border: 30px solid transparent;
+      border-top: 30px solid rgb(244,63,94);
+      border-left: 30px solid rgb(244,63,94);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .ipt{
+      box-shadow: 0 0 5px rgba(204, 204, 204, 0.477);
+    }
 </style>
